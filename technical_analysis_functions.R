@@ -1,18 +1,13 @@
-# technical_analysis_functions.R
-# Assignment 2 - Technical Analysis using R (Preliminary Stage)
 # Functions to load stock data and calculate basic statistics.
 
 library(quantmod)
 library(TTR)
 
 # Reads portfolio.txt and returns the stock symbols as a character vector.
-# Blank lines are skipped.
 read_portfolio <- function(file = "portfolio.txt") {
   symbols <- trimws(readLines(file, warn = FALSE))
   symbols[symbols != ""]
 }
-
-# Downloads the data for every symbol in portfolio.txt using quantmod.
 # Returns a named list with one data frame per stock.
 load_stock_data <- function(file = "portfolio.txt",
                             from = Sys.Date() - 365,
