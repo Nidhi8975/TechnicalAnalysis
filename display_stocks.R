@@ -1,17 +1,11 @@
-# display_stocks.R
-# Assignment 2 - Technical Analysis using R (Preliminary Stage)
-# Loads the stocks, calculates the statistics, and displays everything.
+
 # Set the working directory to this folder before running.
 
 source("technical_analysis_functions.R")
 
-# ---- 1. Load the data and calculate statistics ----
 stocks  <- load_stock_data("portfolio.txt")
 results <- calculate_all_statistics(stocks, ma_days = 20)
 
-# ---- 2. Display functions ----
-
-# Way 1: first and last rows of the raw data for each stock
 display_data_frames <- function(stock_list, n = 5) {
   for (sym in names(stock_list)) {
     cat("\n=====", sym, "=====\n")
@@ -23,7 +17,6 @@ display_data_frames <- function(stock_list, n = 5) {
   }
 }
 
-# Way 2: a quick quote like the top of a Yahoo Finance page
 display_quote <- function(stock_list) {
   for (sym in names(stock_list)) {
     df <- stock_list[[sym]]
